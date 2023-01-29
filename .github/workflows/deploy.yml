@@ -3,10 +3,6 @@ name: Deploy to ECR
 on: 
   workflow_dispatch
 
-defaults:
-  run:
-    working-directory: ./src
-
 env:
   AWS_REGION: "us-east-1"  
   ECR_REPOSITORY: "battleship-api-registry"
@@ -38,6 +34,6 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build . -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f ./Ofx.Battleships.Api/Dockerfile
+          docker build . -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f .src/Ofx.Battleships.Api/Dockerfile
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT   

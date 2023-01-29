@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Ofx.Battleships.Domain.DomainAggregates.GameAggregate;
 using Ofx.Battleships.Domain.DomainAggregates.PlayerAggregate;
 using Ofx.Battleships.Domain.SeedWork;
-using Ofx.Battleships.Infrastructure.Extensions;
 
 namespace Ofx.Battleships.Infrastructure;
 

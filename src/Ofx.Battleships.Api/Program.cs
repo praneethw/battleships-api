@@ -9,7 +9,6 @@ using Ofx.Battleships.Domain.DomainAggregates.PlayerAggregate;
 using Ofx.Battleships.Domain.DomainServices.GameService;
 using Ofx.Battleships.Domain.DomainServices.PlayerService;
 using Ofx.Battleships.Infrastructure;
-using Ofx.Battleships.Infrastructure.Extensions;
 using Ofx.Battleships.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,8 +43,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.SeedDatabase();
-
 app.UsePathBase("/api/v1/");
 
 app.UseHttpsRedirection();
@@ -53,5 +50,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+BattleshipDbContextSeeder.SeedDatabase(app.Services.CreateScope().ServiceProvider.GetService<BattleshipDbContext>());
 
 app.Run();

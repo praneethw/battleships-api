@@ -18,22 +18,22 @@ builder.Services.AddMediator(config =>
 {
     config.AddConsumer<CreatePlayerConsumer>();
     config.AddConsumer<GetPlayerByIdConsumer>();
-
     config.AddConsumer<CreateSinglePlayerGameConsumer>();
     config.AddConsumer<AddShipConsumer>();
     config.AddConsumer<StartGameConsumer>();
     config.AddConsumer<AttackShipConsumer>();
     config.AddConsumer<GetGameByIdConsumer>();
 });
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IPlayerDomainService, PlayerDomainService>();
 builder.Services.AddTransient<IGameDomainService, GameDomainService>();
-
 builder.Services.AddTransient<IPlayerRepository, PlayerRepository>();
 builder.Services.AddTransient<IGameRepository, GameRepository>();
+
+builder.Services.AddHealthChecks();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 

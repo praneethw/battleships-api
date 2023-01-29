@@ -37,11 +37,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UsePathBase("/api/v1/");
 
@@ -49,7 +46,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/health");
+app.MapHealthChecks("/");
 app.MapControllers();
 
 BattleshipDbContextSeeder.SeedDatabase(app.Services.CreateScope().ServiceProvider.GetService<BattleshipDbContext>());

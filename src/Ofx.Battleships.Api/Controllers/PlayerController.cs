@@ -17,8 +17,8 @@ public class PlayerController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] GetPlayerByIdQuery getPlayerByIdQuery)
+    [HttpGet("{PlayerId}")]
+    public async Task<IActionResult> Get([FromRoute]GetPlayerByIdQuery getPlayerByIdQuery)
     {
         var getPlayerByIdQueryResponse = await _mediator.SendRequest(getPlayerByIdQuery);
         if (getPlayerByIdQueryResponse?.Player == null)
@@ -38,6 +38,6 @@ public class PlayerController : ControllerBase
             return BadRequest(createPlayerCommandResponse.Errors);
         }
 
-        return Created(Url.Action(nameof(Get))!, createPlayerCommandResponse.PlayId);
+        return Created($"{createPlayerCommandResponse.PlayId}/{Url.Action(nameof(Get))}", createPlayerCommandResponse.PlayId);
     }
 }

@@ -7,7 +7,7 @@ namespace Ofx.Battleships.Api.Application.Queries.PlayerQueries;
 
 public record GetPlayerByIdQuery : Request<GetPlayerQueryResponse>
 {
-    public Guid Id { get; set; }
+    public Guid PlayerId { get; set; }
 }
 
 public record GetPlayerQueryResponse : CommandQueryResponse
@@ -28,7 +28,7 @@ public class GetPlayerByIdConsumer : IConsumer<GetPlayerByIdQuery>
     {
         try
         {
-            var player = await _playerRepository.GetPlayerAsync(context.Message.Id);
+            var player = await _playerRepository.GetPlayerAsync(context.Message.PlayerId);
             await context.RespondAsync(new GetPlayerQueryResponse
             {
                 Player = player

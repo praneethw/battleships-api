@@ -9,7 +9,7 @@ namespace Ofx.Battleships.Api.Application.Queries.GameQueries;
 
 public record GetGameByIdQuery : Request<GetGameQueryResponse>
 {
-    public Guid Id { get; set; }
+    public Guid GameId { get; set; }
 }
 
 public record GetGameQueryResponse : CommandQueryResponse
@@ -30,7 +30,7 @@ public class GetGameByIdConsumer : IConsumer<GetGameByIdQuery>
     {
         try
         {
-            var game = await _GameRepository.GetGameAsync(context.Message.Id);
+            var game = await _GameRepository.GetGameAsync(context.Message.GameId);
             await context.RespondAsync(new GetGameQueryResponse
             {
                 Game = game

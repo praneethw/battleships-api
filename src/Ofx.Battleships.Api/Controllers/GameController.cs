@@ -24,8 +24,8 @@ public class GameController : ControllerBase
         _mediator = mediator;
         _battleshipDbContext = battleshipDbContext;
     }
-    [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] GetGameByIdQuery getGameByIdQuery)
+    [HttpGet("{gameId}")]
+    public async Task<IActionResult> Get([FromRoute]GetGameByIdQuery getGameByIdQuery)
     {
         var getGameQueryResponse = await _mediator.SendRequest(getGameByIdQuery);
         if (!getGameQueryResponse.IsValid)
@@ -37,7 +37,7 @@ public class GameController : ControllerBase
     }
     
     [HttpPost("Create")]
-    public async Task<IActionResult> Create(CreateSinglePlayerGameCommand createSinglePlayerGameCommand)
+    public async Task<IActionResult> Create([FromBody]CreateSinglePlayerGameCommand createSinglePlayerGameCommand)
     {
         var createGameCommandResponse = await _mediator.SendRequest(createSinglePlayerGameCommand);
         if (!createGameCommandResponse.IsValid)
@@ -45,12 +45,13 @@ public class GameController : ControllerBase
             return BadRequest(createGameCommandResponse.Errors);
         }
 
-        return Created(Url.Action(nameof(Get))!, createGameCommandResponse.GameId);
+        return Created($"{createGameCommandResponse.GameId}/{Url.Action(nameof(Get))}", createGameCommandResponse.GameId);
     }
 
-    [HttpPost("Ship")]
-    public async Task<IActionResult> AddShip(AddShipCommand shipCommand)
+    [HttpPost("{gameId}/Ship")]
+    public async Task<IActionResult> AddShip([FromRoute]Guid gameId, [FromBody]AddShipCommand shipCommand)
     {
+        shipCommand.GameId = gameId;
         var shipCommandResponse = await _mediator.SendRequest(shipCommand);
         if (!shipCommandResponse.IsValid)
         {
@@ -60,9 +61,10 @@ public class GameController : ControllerBase
         return Ok();
     }
 
-    [HttpPost("Start")]
-    public async Task<IActionResult> AddShip(StartGameCommand startGameCommand)
+    [HttpPost("{gameId}/Start")]
+    public async Task<IActionResult> AddShip([FromRoute]Guid gameId, [FromBody]StartGameCommand startGameCommand)
     {
+        startGameCommand.GameId = gameId;
         var startGameCommandResponse = await _mediator.SendRequest(startGameCommand);
         if (!startGameCommandResponse.IsValid)
         {
@@ -72,9 +74,10 @@ public class GameController : ControllerBase
         return Ok();
     }
     
-    [HttpPost("Attack")]
-    public async Task<IActionResult> AddShip(AttackShipCommand attackShipCommand)
+    [HttpPost("{gameId}/Attack")]
+    public async Task<IActionResult> AddShip([FromRoute]Guid gameId, [FromBody]AttackShipCommand attackShipCommand)
     {
+        attackShipCommand.GameId = gameId;
         var attackShipCommandResponse = await _mediator.SendRequest(attackShipCommand);
         if (!attackShipCommandResponse.IsValid)
         {

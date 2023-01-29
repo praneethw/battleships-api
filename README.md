@@ -27,7 +27,7 @@ This API current has opponent functionality disabled for simplicity, which means
 
 The `/api/v1/game/{gameId}/attack` endpoint can be used to attack the opponents board. Please follow the instructions in the Invoking the API section to help create a game, start and attack the opponents board. 
 
-# Invoking the API to play the game
+# Invoking the API via Postman
 Invoking the API can be done by forking the public workspace below. Follow the steps detailed below to run and test the API behaviour.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/292368-76334bca-1482-4bd4-a99c-ab37adf58caf?action=collection%2Ffork&collection-url=entityId%3D292368-76334bca-1482-4bd4-a99c-ab37adf58caf%26entityType%3Dcollection%26workspaceId%3D0cd2f47e-c0d6-4592-85bd-5d9009a5e128)
@@ -55,6 +55,11 @@ You can attack the opponents ships coordinates (refer to the opponent ship place
 ### 6. View game status
 You can always query the entire game object to determine the state of the game at anygiven point. Run the `Get Game` API request via Postman with a valid game ID. The response will include the player and the opponents game boards and the state tracked during the battle (e.g. coordinates hit, ship suck, etc.).
 ![alt text](./docs/images/get_game.png)
+
+# Invoking the API locally
+The API can also be run locally via and IDE such as Visual Studio 2022, latest version of Rider or even vs Code. Please make sure you have the latest version of .NET (dotnet 7) to ensure the application can be compiled and run.
+
+Upon pulling the code down open the solution, set the startup project to the `\src\Ofx.Battleships.Api\Ofx.Battleships.Api.csproj` and run the application.
 
 # Next Steps
 * Enable opponent attack capability, after each player move. 

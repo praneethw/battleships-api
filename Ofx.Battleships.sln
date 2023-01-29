@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ofx.Battleships.Api", "src\Ofx.Battleships.Api\Ofx.Battleships.Api.csproj", "{753BA7D0-6DB0-4B50-A1C9-B6B1C8F5813C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ofx.Battleships.Infrastructure", "src\Ofx.Battleships.Infrastructure\Ofx.Battleships.Infrastructure.csproj", "{A8CCAC68-E8E6-4751-815E-C80CBCE8A7B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ofx.Battleships.Domain", "src\Ofx.Battleships.Domain\Ofx.Battleships.Domain.csproj", "{DE65BD57-8051-4F3A-B8E4-30203D4C7AD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{753BA7D0-6DB0-4B50-A1C9-B6B1C8F5813C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753BA7D0-6DB0-4B50-A1C9-B6B1C8F5813C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753BA7D0-6DB0-4B50-A1C9-B6B1C8F5813C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753BA7D0-6DB0-4B50-A1C9-B6B1C8F5813C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CCAC68-E8E6-4751-815E-C80CBCE8A7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CCAC68-E8E6-4751-815E-C80CBCE8A7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CCAC68-E8E6-4751-815E-C80CBCE8A7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CCAC68-E8E6-4751-815E-C80CBCE8A7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE65BD57-8051-4F3A-B8E4-30203D4C7AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE65BD57-8051-4F3A-B8E4-30203D4C7AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE65BD57-8051-4F3A-B8E4-30203D4C7AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE65BD57-8051-4F3A-B8E4-30203D4C7AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

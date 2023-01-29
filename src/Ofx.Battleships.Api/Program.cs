@@ -49,6 +49,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapHealthChecks("/health");
 app.MapControllers();
 
 BattleshipDbContextSeeder.SeedDatabase(app.Services.CreateScope().ServiceProvider.GetService<BattleshipDbContext>());
